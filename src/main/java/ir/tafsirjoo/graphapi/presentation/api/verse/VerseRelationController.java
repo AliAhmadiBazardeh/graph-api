@@ -4,6 +4,7 @@ import ir.tafsirjoo.graphapi.application.verse.dto.CreateVerseRelationCommand;
 import ir.tafsirjoo.graphapi.application.verse.service.CreateVerseRelationService;
 import ir.tafsirjoo.graphapi.domain.verse.model.VerseRelation;
 import ir.tafsirjoo.graphapi.domain.verse.model.VerseReference;
+import ir.tafsirjoo.graphapi.presentation.api.verse.dto.CreateVerseRelationResponse;
 import ir.tafsirjoo.graphapi.presentation.verse.dto.CreateVerseRelationRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class VerseRelationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(
+    public CreateVerseRelationResponse create(
             @Valid @RequestBody CreateVerseRelationRequest request
     ) {
 
@@ -40,6 +41,9 @@ public class VerseRelationController {
                         request.type()
                 );
 
-        service.execute(command);
+        VerseRelation relation = service.execute(command);
+
+        return CreateVerseRelationResponse.from(relation);
+
     }
 }

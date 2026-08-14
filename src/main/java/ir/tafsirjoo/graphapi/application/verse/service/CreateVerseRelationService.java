@@ -18,7 +18,7 @@ public class CreateVerseRelationService {
             CreateVerseRelationCommand command
     ) {
 
-        VerseRelation relation = new VerseRelation(
+        VerseRelation relation = VerseRelation.create(
                 command.source(),
                 command.target(),
                 command.type()

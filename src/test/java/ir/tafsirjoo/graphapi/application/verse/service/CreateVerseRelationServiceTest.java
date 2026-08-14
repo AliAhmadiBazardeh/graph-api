@@ -8,6 +8,7 @@ import ir.tafsirjoo.graphapi.domain.verse.repository.VerseRelationRepository;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import org.mockito.ArgumentCaptor;
 
@@ -30,7 +31,7 @@ class CreateVerseRelationServiceTest {
                 );
 
         VerseRelation savedRelation =
-                new VerseRelation(
+                VerseRelation.create(
                         command.source(),
                         command.target(),
                         command.type()
@@ -41,6 +42,8 @@ class CreateVerseRelationServiceTest {
 
         VerseRelation result =
                 service.execute(command);
+
+        assertNotNull(result.id());
 
         assertEquals(
                 command.source(),
@@ -64,6 +67,8 @@ class CreateVerseRelationServiceTest {
 
         VerseRelation captured =
                 captor.getValue();
+
+        assertNotNull(captured.id());
 
         assertEquals(
                 command.source(),
