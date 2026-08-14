@@ -1,4 +1,9 @@
 package ir.tafsirjoo.graphapi.domain.verse.model;
 
-public class RelationType {
+public enum RelationType {
+
+    THEMATIC,
+    EXPLANATORY,
+    CONTEXTUAL,
+    REFERENCE
 }
