@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import org.mockito.ArgumentCaptor;
 
 class CreateVerseRelationServiceTest {
 
@@ -56,6 +57,27 @@ class CreateVerseRelationServiceTest {
                 result.type()
         );
 
-        verify(repository).save(any(VerseRelation.class));
+        ArgumentCaptor<VerseRelation> captor =
+                ArgumentCaptor.forClass(VerseRelation.class);
+
+        verify(repository).save(captor.capture());
+
+        VerseRelation captured =
+                captor.getValue();
+
+        assertEquals(
+                command.source(),
+                captured.source()
+        );
+
+        assertEquals(
+                command.target(),
+                captured.target()
+        );
+
+        assertEquals(
+                command.type(),
+                captured.type()
+        );
     }
 }
