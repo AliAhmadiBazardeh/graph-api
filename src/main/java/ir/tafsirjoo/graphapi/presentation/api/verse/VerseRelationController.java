@@ -1,4 +1,4 @@
-package ir.tafsirjoo.graphapi.presentation.verse;
+package ir.tafsirjoo.graphapi.presentation.api.verse;
 
 import ir.tafsirjoo.graphapi.application.verse.dto.CreateVerseRelationCommand;
 import ir.tafsirjoo.graphapi.application.verse.service.CreateVerseRelationService;
