@@ -18,6 +18,13 @@ public class VerseRelation {
         this.source = Objects.requireNonNull(source);
         this.target = Objects.requireNonNull(target);
         this.type = Objects.requireNonNull(type);
+
+
+        if (source.equals(target)) {
+            throw new IllegalArgumentException(
+                    "Source and target verses cannot be the same"
+            );
+        }
     }
 
     public VerseReference source() {
